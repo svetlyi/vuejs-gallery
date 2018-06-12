@@ -1,0 +1,5 @@
+entity.image.name: Name
+entity.image.name_description: 'Maximum 255 chars'
+entity.image.file: File
+entity.image.labels.choose_file: 'Choose file'
+entity.image.labels.save: 'Save it'

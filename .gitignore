@@ -1,0 +1,8 @@
+/.env
+/public/bundles/
+/var/
+/vendor/
+/public/main.js
+/public/uploads/*
+!/public/uploads/.gitkeep
+/node_modules
