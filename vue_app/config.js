@@ -1,3 +1,3 @@
 export const config = {
-    baseUrl: 'http://experiments.local'
+    baseUrl: 'http://127.0.0.1:55080'
 }

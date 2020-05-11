@@ -11,20 +11,16 @@ use Symfony\Component\Validator\Constraints as Assert;
 class ImageDto
 {
     /**
-     * @var string
-     *
      * @Assert\NotBlank()
      * @Assert\Length(max="255")
      */
-    protected $name;
+    protected ?string $name = null;
 
     /**
-     * @var UploadedFile
-     *
      * @Assert\NotBlank()
      * @Assert\Image()
      */
-    protected $file;
+    protected ?UploadedFile $file = null;
 
     /**
      * Get name.

@@ -4,17 +4,18 @@ namespace App\Controller;
 
 use App\Dto\ImageDto;
 use App\Form\ImageType;
-use App\Service\FormErrorService;
-use App\Service\ImageService;
-use App\Service\ImageViewService;
+use App\Service\FormError;
+use App\Service\Image as ImageService;
+use App\Service\ImageView;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * @Route("/image", name="image_")
  */
-class ImageController extends Controller
+class ImageController extends AbstractController
 {
     /**
      * @Route("/", name="index")
@@ -27,11 +28,11 @@ class ImageController extends Controller
 
     /**
      * @Route("/list", name="list")
-     * @param ImageViewService $imageViewService
+     * @param ImageView $imageViewService
      *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @return JsonResponse
      */
-    public function imageList(ImageViewService $imageViewService)
+    public function imageList(ImageView $imageViewService)
     {
         return $this->json($imageViewService->getList());
     }
@@ -40,13 +41,13 @@ class ImageController extends Controller
      * @Route("/create", name="create")
      *
      * @param Request $request
-     * @param ImageViewService $imageViewService
+     * @param ImageView $imageViewService
      * @param ImageService $imageService
      *
-     * @param FormErrorService $errorService
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @param FormError $errorService
+     * @return JsonResponse
      */
-    public function imageCreate(Request $request, ImageViewService $imageViewService, ImageService $imageService, FormErrorService $errorService)
+    public function imageCreate(Request $request, ImageView $imageViewService, ImageService $imageService, FormError $errorService)
     {
         $form = $this->createForm(ImageType::class, new ImageDto());
         $form->handleRequest($request);
